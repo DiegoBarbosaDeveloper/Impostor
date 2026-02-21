@@ -1,0 +1,31 @@
+package co.edu.ustavillavo.impostor.domain.dto;
+
+import co.edu.ustavillavo.impostor.domain.enums.RoomStatus;
+import jakarta.validation.constraints.Min;
+
+import java.util.UUID;
+
+
+/*
+   Clase Plana (Java puro) para la lógica del dto
+   El Record es una clase especial de java en la que declaras atributos y esos atributos siempre serán finales (Inmodificables).
+   También crea los getters para obtener los datos del record. No hay Setters.
+
+
+
+ */
+public record Room(
+        UUID id,
+        String code,
+        RoomStatus status,
+        UUID hostPlayerId,
+        String category,
+        int impostorCount,
+        Byte currentRound,
+        String secretWord,
+        String winnerTeam
+)
+{
+
+
+}
