@@ -1,6 +1,7 @@
 package co.edu.ustavillavo.impostor.service.room;
 
 import co.edu.ustavillavo.impostor.domain.dto.Room;
+import co.edu.ustavillavo.impostor.domain.entity.RoomEntity;
 import co.edu.ustavillavo.impostor.repo.RoomRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,9 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public void deleteRoom(UUID id) {
 
+    }
+
+    private RoomEntity toDomain(){
+        return null;
     }
 }
