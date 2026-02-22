@@ -46,7 +46,11 @@ public class RoomServiceImpl implements RoomService {
 
     }
 
-    private RoomEntity toDomain(){
+    private RoomEntity toEntity(){
+        return null;
+    }
+
+    private Room toDto(){
         return null;
     }
 }
