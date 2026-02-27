@@ -1,6 +1,7 @@
 package co.edu.ustavillavo.impostor.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,10 +25,10 @@ public class RoomRestController {
     private final AssignmentService assignmentService;
 
 
-    @PostMapping("{me}")
-    public ResponseEntity<?> nose(@RequestParam String name){
+    @GetMapping
+    public ResponseEntity<?> nose(@RequestParam String me){
 
-        return ResponseEntity.ok("Hola " + name);
+        return ResponseEntity.ok("Hola " + me);
 
 
     }
