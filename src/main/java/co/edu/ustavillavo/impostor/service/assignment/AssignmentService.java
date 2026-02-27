@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface AssigmentService {
-
+public interface AssignmentService {
 
     /*
        PETICIONES HTTP/HTTPS
@@ -18,7 +17,6 @@ public interface AssigmentService {
         PATCH --> Modifica partes del dato
         DELETE --> Eliminar el dato
      */
-
 
     /*
         GET
@@ -40,9 +38,9 @@ public interface AssigmentService {
         PATCH
      */
     void modifyAssignment(Assignment dto);
+
     /*
         DELETE
      */
     void deleteAssignment(UUID id);
-
 }

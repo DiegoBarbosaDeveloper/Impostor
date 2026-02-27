@@ -46,6 +46,5 @@ public interface VoteService {
         DELETE
      */
     void deleteVote(UUID id);
-
-
 }
+

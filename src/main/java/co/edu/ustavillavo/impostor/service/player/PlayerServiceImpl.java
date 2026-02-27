@@ -1,7 +1,7 @@
 package co.edu.ustavillavo.impostor.service.player;
 
-import co.edu.ustavillavo.entity.PlayerEntity;
 import co.edu.ustavillavo.impostor.domain.dto.Player;
+import co.edu.ustavillavo.impostor.entity.PlayerEntity;
 import co.edu.ustavillavo.impostor.repo.PlayerRepository;
 import co.edu.ustavillavo.impostor.repo.RoomRepository;
 import jakarta.transaction.Transactional;
@@ -93,6 +93,7 @@ public class PlayerServiceImpl implements PlayerService{
             entity.setAlive(!dto.alive());
         }
 
+        playerRepository.save(entity);
     }
 
     @Override
@@ -103,7 +104,7 @@ public class PlayerServiceImpl implements PlayerService{
 
 
 
-    // Mappers
+    // Mapeadores
     private Player toDto(PlayerEntity entity){
         return new Player(
                 entity.getPlayerId(),

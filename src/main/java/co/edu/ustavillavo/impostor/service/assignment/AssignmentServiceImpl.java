@@ -1,8 +1,8 @@
 package co.edu.ustavillavo.impostor.service.assignment;
 
-import co.edu.ustavillavo.entity.AssignmentEntity;
 import co.edu.ustavillavo.impostor.domain.dto.Assignment;
-import co.edu.ustavillavo.impostor.repo.AssigmentRepository;
+import co.edu.ustavillavo.impostor.entity.AssignmentEntity;
+import co.edu.ustavillavo.impostor.repo.AssignmentRepository;
 import co.edu.ustavillavo.impostor.repo.PlayerRepository;
 import co.edu.ustavillavo.impostor.repo.RoomRepository;
 import jakarta.transaction.Transactional;
@@ -17,14 +17,14 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class AssignmentServiceImpl implements AssigmentService {
+public class AssignmentServiceImpl implements AssignmentService {
 
     /*
         Dependencia básica del repositorio de asignación
 
         Los repos nos permiten interactuar con la BD
      */
-    private final AssigmentRepository assigmentRepository;
+    private final AssignmentRepository assignmentRepository;
 
     // Dependencia extra del repositorio de asignación del cuarto (Room)
     private final RoomRepository roomRepository;
@@ -39,7 +39,7 @@ public class AssignmentServiceImpl implements AssigmentService {
     // Obtienes una lista de entidades -> la conviertes a dto -> la regresas en lista
     @Override
     public List<Assignment> getAllAssignments() {
-        return assigmentRepository.findAll()
+        return assignmentRepository.findAll()
                 .stream()
                 .map(this::toDto)
                 .toList();
@@ -49,7 +49,7 @@ public class AssignmentServiceImpl implements AssigmentService {
     @Override
     public Optional<Assignment> getAssignment(@NonNull UUID id) {
 
-        return Optional.of(toDto(assigmentRepository.getReferenceById(id)));
+        return Optional.of(toDto(assignmentRepository.getReferenceById(id)));
 
     }
 
@@ -65,7 +65,7 @@ public class AssignmentServiceImpl implements AssigmentService {
             throw new RuntimeException("No Null Attributes Allowed");
         }
 
-        assigmentRepository.save(toEntity(dto));
+        assignmentRepository.save(toEntity(dto));
 
         return dto;
     }
@@ -87,14 +87,14 @@ public class AssignmentServiceImpl implements AssigmentService {
             throw new RuntimeException("Null Attributes Are Not Allowed to Update");
         }
 
-       AssignmentEntity entity = assigmentRepository.getReferenceById(dto.id());
+       AssignmentEntity entity = assignmentRepository.getReferenceById(dto.id());
 
         entity.setRoom(roomRepository.getReferenceById(dto.roomId()));
         entity.setRole(dto.role());
         entity.setWord(dto.word());
         entity.setPlayer(playerRepository.getReferenceById(dto.playerId()));
 
-        assigmentRepository.save(entity);
+        assignmentRepository.save(entity);
     }
 
     /*
@@ -105,7 +105,7 @@ public class AssignmentServiceImpl implements AssigmentService {
         if (dto.id() == null){
             throw new RuntimeException("No Id for Modifying Assignment");
         }
-        AssignmentEntity entity = assigmentRepository.getReferenceById(dto.id());
+        AssignmentEntity entity = assignmentRepository.getReferenceById(dto.id());
 
         if(dto.playerId() != null){
             entity.setPlayer(playerRepository.getReferenceById(dto.playerId()));
@@ -119,7 +119,7 @@ public class AssignmentServiceImpl implements AssigmentService {
         if(dto.role() != null){
             entity.setRole(dto.role());
         }
-        assigmentRepository.save(entity);
+        assignmentRepository.save(entity);
     }
 
     /*
@@ -127,7 +127,7 @@ public class AssignmentServiceImpl implements AssigmentService {
      */
     @Override
     public void deleteAssignment(@NonNull UUID id) {
-        assigmentRepository.deleteById(id);
+        assignmentRepository.deleteById(id);
     }
 
     /*
@@ -150,8 +150,8 @@ public class AssignmentServiceImpl implements AssigmentService {
     private Assignment toDto(AssignmentEntity entity){
         return new Assignment(
                 entity.getAssignmentId(),
-                entity.getAssignmentId(),
                 entity.getRoom().getRoomId(),
+                entity.getPlayer().getPlayerId(),
                 entity.getRole(),
                 entity.getWord()
         );

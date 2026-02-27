@@ -1,4 +1,4 @@
-package co.edu.ustavillavo.entity;
+package co.edu.ustavillavo.impostor.entity;
 
 import co.edu.ustavillavo.impostor.domain.enums.Role;
 import jakarta.persistence.*;

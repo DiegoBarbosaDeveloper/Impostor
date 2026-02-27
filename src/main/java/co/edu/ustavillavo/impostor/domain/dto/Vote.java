@@ -11,6 +11,7 @@ import java.util.UUID;
 */
 
 public record Vote(
+        UUID id,
         UUID roomId,
         int roundNumber,
         UUID voterId,

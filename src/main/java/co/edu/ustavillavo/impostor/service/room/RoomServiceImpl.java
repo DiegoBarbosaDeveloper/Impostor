@@ -1,7 +1,7 @@
 package co.edu.ustavillavo.impostor.service.room;
 
-import co.edu.ustavillavo.entity.RoomEntity;
 import co.edu.ustavillavo.impostor.domain.dto.Room;
+import co.edu.ustavillavo.impostor.entity.RoomEntity;
 import co.edu.ustavillavo.impostor.repo.PlayerRepository;
 import co.edu.ustavillavo.impostor.repo.RoomRepository;
 import lombok.NonNull;
@@ -86,13 +86,46 @@ public class RoomServiceImpl implements RoomService {
             throw new RuntimeException("No id for Modifying Room");
         }
 
+        RoomEntity entity = roomRepository.getReferenceById(dto.id());
 
+        if (!dto.code().isBlank()){
+            entity.setCode(dto.code());
+        }
 
+        if (dto.status() != null){
+            entity.setStatus(dto.status());
+        }
+
+        if (dto.hostPlayerId() != null){
+            entity.setHostPlayer(playerRepository.getReferenceById(dto.hostPlayerId()));
+        }
+
+        if (!dto.category().isBlank()){
+            entity.setCategory(dto.category());
+        }
+
+        if (dto.impostorCount() != null && dto.impostorCount() > 0){
+            entity.setImpostorCount(dto.impostorCount());
+        }
+
+        if (dto.currentRound() != null){
+            entity.setCurrentRound(dto.currentRound());
+        }
+
+        if (dto.secretWord() != null && !dto.secretWord().isBlank()){
+            entity.setSecretWord(dto.secretWord());
+        }
+
+        if (!dto.winnerTeam().isBlank()){
+            entity.setWinnerTeam(dto.winnerTeam());
+        }
+
+        roomRepository.save(entity);
     }
 
     @Override
     public void deleteRoom(UUID id) {
-
+        roomRepository.deleteById(id);
     }
 
     private RoomEntity toEntity(Room dto){
