@@ -15,7 +15,7 @@ import java.util.UUID;
 public class PlayerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID PlayerId;
+    private UUID playerId;
 
     @ManyToOne
     @JoinColumn(name = "impo_play_room_id", nullable = false)

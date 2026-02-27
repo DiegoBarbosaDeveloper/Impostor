@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class VoteResponse {
-    private String massage;
+    private String message;
     private Byte round;
 }

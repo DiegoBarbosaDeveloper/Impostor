@@ -7,6 +7,6 @@ public class RoomsBody {
     
     private String hostNickname;
     private String category;
-    private String impostorCount;
+    private Integer impostorCount;
 
 }

@@ -16,7 +16,7 @@ import java.util.UUID;
 public class RoomEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID RoomId;
+    private UUID roomId;
 
     @Column(name = "impo_room_code", nullable = false)
     private String code;
@@ -26,7 +26,7 @@ public class RoomEntity {
     private RoomStatus status;
 
     @OneToOne
-    @JoinColumn(name = "impo_room_host_player_id", nullable = false)
+    @JoinColumn(name = "impo_room_host_player_id")
     private PlayerEntity hostPlayer;
 
     @Column(name = "impo_room_category", nullable = false)
