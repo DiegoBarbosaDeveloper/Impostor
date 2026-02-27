@@ -1,4 +1,4 @@
-package co.edu.ustavillavo.impostor.domain.entity;
+package co.edu.ustavillavo.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

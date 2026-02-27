@@ -1,7 +1,6 @@
 package co.edu.ustavillavo.impostor.domain.dto;
 
 import co.edu.ustavillavo.impostor.domain.enums.RoomStatus;
-import jakarta.validation.constraints.Min;
 
 import java.util.UUID;
 
@@ -20,12 +19,9 @@ public record Room(
         RoomStatus status,
         UUID hostPlayerId,
         String category,
-        int impostorCount,
+        Integer impostorCount,
         Byte currentRound,
         String secretWord,
         String winnerTeam
 )
-{
-
-
-}
+{}

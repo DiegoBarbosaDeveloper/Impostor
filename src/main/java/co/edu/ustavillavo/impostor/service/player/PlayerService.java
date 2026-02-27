@@ -27,7 +27,7 @@ public interface PlayerService {
     /*
         POST
      */
-    Optional<Player> savePlayer(Player dto);
+    Player savePlayer(Player dto);
 
     /*
         PUT

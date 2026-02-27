@@ -1,6 +1,5 @@
 package co.edu.ustavillavo.impostor.service.room;
 
-import co.edu.ustavillavo.impostor.domain.dto.Assignment;
 import co.edu.ustavillavo.impostor.domain.dto.Room;
 
 import java.util.List;
@@ -29,7 +28,7 @@ public interface RoomService {
     /*
         POST
      */
-    Optional<Room> saveRoom(Room dto);
+    Room saveRoom(Room dto);
 
     /*
         PUT

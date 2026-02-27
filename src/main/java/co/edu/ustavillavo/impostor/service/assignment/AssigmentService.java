@@ -29,7 +29,7 @@ public interface AssigmentService {
     /*
         POST
      */
-    Optional<Assignment> saveAssignment(Assignment dto);
+    Assignment saveAssignment(Assignment dto);
 
     /*
         PUT

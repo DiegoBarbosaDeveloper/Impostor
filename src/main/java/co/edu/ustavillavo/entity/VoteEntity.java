@@ -1,4 +1,4 @@
-package co.edu.ustavillavo.impostor.domain.entity;
+package co.edu.ustavillavo.entity;
 
 import co.edu.ustavillavo.impostor.domain.enums.RoomStatus;
 import jakarta.persistence.*;

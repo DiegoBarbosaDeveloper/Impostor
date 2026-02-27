@@ -1,7 +1,7 @@
 package co.edu.ustavillavo.impostor.service.assignment;
 
+import co.edu.ustavillavo.entity.AssignmentEntity;
 import co.edu.ustavillavo.impostor.domain.dto.Assignment;
-import co.edu.ustavillavo.impostor.domain.entity.AssignmentEntity;
 import co.edu.ustavillavo.impostor.repo.AssigmentRepository;
 import co.edu.ustavillavo.impostor.repo.PlayerRepository;
 import co.edu.ustavillavo.impostor.repo.RoomRepository;
@@ -59,11 +59,15 @@ public class AssignmentServiceImpl implements AssigmentService {
         Pasas dto -> guardas en bd -> regresas el dto
      */
     @Override
-    public Optional<Assignment> saveAssignment(@NonNull Assignment dto) {
+    public Assignment saveAssignment(@NonNull Assignment dto) {
+        if(dto.playerId() == null || dto.role() == null || dto.word().isBlank()
+        || dto.roomId() == null){
+            throw new RuntimeException("No Null Attributes Allowed");
+        }
 
         assigmentRepository.save(toEntity(dto));
 
-        return Optional.of(dto);
+        return dto;
     }
 
     /*
